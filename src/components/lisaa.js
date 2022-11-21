@@ -25,7 +25,7 @@ export default function LisaaVaate(props) {
       };
 
     const handleSave = () => {
-        props.lisaaVaate(vaate);
+        props.addVaate(vaate);
         setOpen(false);
     };
 
