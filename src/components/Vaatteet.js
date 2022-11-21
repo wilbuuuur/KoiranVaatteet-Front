@@ -89,7 +89,7 @@ function Vaatelist () {
 
     return (
         <>
-        <addVaate  addVaate={addVaate}/>
+        <Lisaa  addVaate={addVaate}/>
         <div className= 'ag-theme-material' style={{height: 650, width:'90%', margin: 'auto'}}>
             
             <AgGridReact
