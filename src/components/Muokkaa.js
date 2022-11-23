@@ -6,7 +6,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
-export default function EditCar(props) {
+export default function EditVaate(props) {
     const [open, setOpen] = React.useState(false);
     const [vaate, setVaate] = React.useState({
         name: '',
@@ -30,7 +30,7 @@ export default function EditCar(props) {
   };
   
   const handleSave = () => {
-    props.updateCar(vaate, props.data._links.vaate.href);
+    props.updateVaate(vaate, props.data._links.vaate.href);
     setOpen(false);
   };
 
