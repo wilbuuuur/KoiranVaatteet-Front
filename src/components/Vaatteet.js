@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 
 import Lisaa from './lisaa';
 import Muokkaa from './Muokkaa';
-import { API_URL } from '../constants';
+import { API_URL, API_URL_VAATTEET } from '../constants';
 
 
 
@@ -29,7 +29,7 @@ function Vaatelist () {
     ])
 
     const getVaatteet = () => {
-        fetch(API_URL)
+        fetch(API_URL_VAATTEET)
         .then(response => {
             if (response.ok)
              return response.json();
@@ -45,7 +45,7 @@ function Vaatelist () {
 
     const deleteVaate = (data) => {
       if (window.confirm('Are you sure'))
-        fetch('https://koiranvaatetesti.herokuapp.com/rest/vaatteet/' + data.id , {method: 'DELETE'})
+        fetch(API_URL + data.id , {method: 'DELETE'})
         .then(response => {
             if (response.ok)
              getVaatteet();
@@ -55,7 +55,7 @@ function Vaatelist () {
     }
 
     const addVaate = (vaate) => {
-          fetch('https://koiranvaatetesti.herokuapp.com/api/vaates', {
+          fetch(API_URL, {
             method: 'POST',
             headers: {'Content-type':'application/json'},
             body: JSON.stringify(vaate)
@@ -71,12 +71,12 @@ function Vaatelist () {
 
     
 
-    const updateVaate = (vaate, url) => {
-        console.log(url)
-        fetch(url, {
+    const updateVaate = (data) => {
+        console.log(data)
+        fetch(API_URL + data.id, {
             method: 'PUT',
             headers: {'Content-type':'application/json'},
-            body: JSON.stringify(vaate)
+            body: JSON.stringify(data)
         })
         .then(response => {
             if (response.ok)
