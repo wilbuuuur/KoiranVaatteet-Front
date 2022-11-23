@@ -1,1 +1,1 @@
-export const API_URL ="http://localhost:8080/api/vaates"
+export const API_URL ="https://koiranvaatetesti.herokuapp.com/api/vaates"
