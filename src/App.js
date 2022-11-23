@@ -1,10 +1,22 @@
 import './App.css';
-import Vaatelist from './components/Vaatteet';
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
+import Vaatelist from './components/Vaatteet';
+import Valmistajat from './components/Valmistajat';
+
 
 function App() {
+
+  const [value, setValue] = useState('one');
+
+  const handleChange = (event, value) => {
+      setValue(value);
+  };
+
   return (
     <div className="App">
       <AppBar position='static'>
@@ -12,9 +24,14 @@ function App() {
           <Typography variant='h6'>
             Vaate
           </Typography>
+          <Tabs value={value} onChange={handleChange}>
+            <Tab label="Vaatteet" value="one" />
+            <Tab label="Valmistajat" value="two" />
+            </Tabs>
         </Toolbar>
       </AppBar>
-      <Vaatelist />
+      {value==='one' && <div><Vaatelist/></div>}
+      {value==='two'&& <div><Valmistajat/></div>}
     </div>
   );
 }
