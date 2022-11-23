@@ -4,7 +4,7 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import Button from '@mui/material/Button';
 
-import Lisaa from './Lisaa';
+import Lisaa from './lisaa';
 import Muokkaa from './Muokkaa';
 import { API_URL } from '../constants';
 
