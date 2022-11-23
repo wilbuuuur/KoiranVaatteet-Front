@@ -62,6 +62,13 @@ export default function LisaaVaate(props) {
             fullWidth
             variant="standard"
           />
+          <TextField
+            margin="dense"
+            label="Valmistaja"
+            fullWidth
+            variant="standard"
+          />
+          
           
         </DialogContent>
         <DialogActions>
