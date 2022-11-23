@@ -9,6 +9,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 export default function EditVaate(props) {
     const [open, setOpen] = React.useState(false);
     const [vaate, setVaate] = React.useState({
+        id: '',
         name: '',
         type: '',
         price: '',
@@ -19,9 +20,11 @@ export default function EditVaate(props) {
     setOpen(true);
     console.log(props.data)
     setVaate({
+        id: props.data.id,
         name: props.data.name,
         type: props.data.type,
         price: props.data.price,
+        
         
     })
   };
@@ -31,7 +34,7 @@ export default function EditVaate(props) {
   };
   
   const handleSave = () => {
-    props.updateVaate(vaate, props.data._links.vaate.href);
+    props.updateVaate(vaate);
     setOpen(false);
   };
 
