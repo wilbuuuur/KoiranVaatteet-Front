@@ -21,7 +21,8 @@ export default function EditVaate(props) {
     setVaate({
         name: props.data.name,
         type: props.data.type,
-        price: props.data.price
+        price: props.data.price,
+        
     })
   };
 
@@ -63,6 +64,14 @@ return (
         margin="dense"
         label="Hinta"
         value={vaate.price}
+        onChange={e => setVaate({...vaate, price: e.target.value})}
+        fullWidth
+        variant="standard"
+      />
+      <TextField
+        margin="dense"
+        label="Valmistaja"
+        value={vaate.valmistaja}
         onChange={e => setVaate({...vaate, price: e.target.value})}
         fullWidth
         variant="standard"
