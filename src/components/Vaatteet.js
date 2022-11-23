@@ -17,7 +17,7 @@ function Vaatelist () {
         {field: 'name', sortable: true, filter: true},
         {field: 'type', sortable: true, filter: true},
         {field: 'price', sortable: true, filter: true, width: 150},
-        {field: 'valmistaja', sortable: true, filter: true},
+        {headerName: 'Valmistaja' ,field: 'valmistaja.name', sortable: true, filter: true},
         {
             width: 120,
             cellRenderer: params => <Muokkaa data={params.data} updateVaate={updateVaate} />
@@ -36,7 +36,7 @@ function Vaatelist () {
             else
              alert('something went wrong')
         })
-        .then(data => setVaatteet(data._embedded.vaates))
+        .then(data => setVaatteet(data))
         .catch(err => console.error(err))
     }
     useEffect(() => {
@@ -45,7 +45,7 @@ function Vaatelist () {
 
     const deleteVaate = (data) => {
       if (window.confirm('Are you sure'))
-        fetch(data._links.vaate.href, {method: 'DELETE'})
+        fetch('https://koiranvaatetesti.herokuapp.com/rest/vaatteet/' + data.id , {method: 'DELETE'})
         .then(response => {
             if (response.ok)
              getVaatteet();
@@ -55,21 +55,24 @@ function Vaatelist () {
     }
 
     const addVaate = (vaate) => {
-        fetch(API_URL, {
+          fetch('https://koiranvaatetesti.herokuapp.com/api/vaates', {
             method: 'POST',
             headers: {'Content-type':'application/json'},
             body: JSON.stringify(vaate)
         })
-        .then(response => {
-            if (response.ok)
-             getVaatteet();
-            else
-             alert('Vituiks män');
-    })
-    .catch(err => console.error(err))
-         }
+          .then(response => {
+              if (response.ok)
+               getVaatteet();
+              else
+               alert('something went wrong')
+          })
+          .catch(err => console.error(err))
+      }
+
+    
 
     const updateVaate = (vaate, url) => {
+        console.log(url)
         fetch(url, {
             method: 'PUT',
             headers: {'Content-type':'application/json'},
