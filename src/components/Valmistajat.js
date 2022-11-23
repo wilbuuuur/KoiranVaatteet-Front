@@ -10,6 +10,12 @@ export default function Valmistajat() {
     const [valmistajat, setValmistajat] = useState([]);
 
     const [columnDefs] = useState ([
+        {
+            headerName: '',
+            field: 'valmistajaid',
+            width: 120,
+            cellRenderer: params => <Button size='small' color='error' onClick={() => deleteValmistaja(params.value)}>Delete</Button>
+        },
         { field: 'name', sortable: true, filter: true},
     ])
 
@@ -26,8 +32,21 @@ export default function Valmistajat() {
             else
                 alert('Something went wrong')
         })
-        .then(data => setValmistajat(data._embedded.valmistajas))
+        .then(data => setValmistajat(data))
         .catch(err => console.log(err))
+    }
+
+    const deleteValmistaja = (id) => {
+        if(window.confirm('Are you sure?')) {
+            fetch('https://koiranvaatetesti.herokuapp.com/api/valmistajas/' + id, {method: 'DELETE'})
+            .then(response => {
+                if(response.ok)
+                    getValmistajat();
+                else
+                    alert('Something went wrong')
+            })
+            .catch(err => console.log(err))
+        }
     }
 
     return(
