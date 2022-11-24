@@ -18,6 +18,7 @@ export default function LisaaVaate(props) {
     valmistaja: "",
   });
 
+
   const [valmistajat, setValmistajat] = React.useState([]);
 
   const getValmistajat = () => {
@@ -33,7 +34,6 @@ export default function LisaaVaate(props) {
 
   useEffect(() => {
     getValmistajat();
-    console.log({valmistajat});
   }, []);
 
   const handleClickOpen = () => {
@@ -85,11 +85,11 @@ export default function LisaaVaate(props) {
           <TextField
             select
             label="Valmistaja"
-            value={vaate.valmistaja}
+            onChange={(e) => setVaate({ ...vaate, valmistaja: e.target.value })}
             fullWidth
           >
             {valmistajat.map((option) => (
-              <MenuItem key={option.valmistajaid} value={option.name}>
+              <MenuItem key={option.valmistajaid} value={option}>
                 {option.name}
               </MenuItem>
             ))}

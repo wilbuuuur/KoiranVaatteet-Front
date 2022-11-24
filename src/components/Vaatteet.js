@@ -55,7 +55,8 @@ function Vaatelist () {
     }
 
     const addVaate = (vaate) => {
-          fetch(API_URL, {
+            console.log(vaate);
+          fetch(API_URL_VAATTEET, {
             method: 'POST',
             headers: {'Content-type':'application/json'},
             body: JSON.stringify(vaate)
