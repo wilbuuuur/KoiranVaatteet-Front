@@ -3,7 +3,7 @@ import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import { Button } from '@mui/material';
 import { AgGridReact } from 'ag-grid-react/lib/agGridReact';
-import { API_URL_VALMISTAJAT } from '../constants';
+import { API_URL_VALMISTAJAT, API_URL_VALMISTAJA_DEL } from '../constants';
 
 
 export default function Valmistajat() {
@@ -38,7 +38,7 @@ export default function Valmistajat() {
 
     const deleteValmistaja = (id) => {
         if(window.confirm('Are you sure?')) {
-            fetch('https://koiranvaatetesti.herokuapp.com/api/valmistajas/' + id, {method: 'DELETE'})
+            fetch(API_URL_VALMISTAJA_DEL + id, {method: 'DELETE'})
             .then(response => {
                 if(response.ok)
                     getValmistajat();
