@@ -7,6 +7,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Vaatelist from './components/Vaatteet';
 import Valmistajat from './components/Valmistajat';
+import Ympyra from './components/Ympyra';
 
 
 function App() {
@@ -27,11 +28,14 @@ function App() {
           <Tabs value={value} onChange={handleChange}>
             <Tab label="Vaatteet" value="one" />
             <Tab label="Valmistajat" value="two" />
+            <Tab label="Diagram" value="three" />
+
             </Tabs>
         </Toolbar>
       </AppBar>
       {value==='one' && <div><Vaatelist/></div>}
       {value==='two'&& <div><Valmistajat/></div>}
+      {value==='three'&& <div><Ympyra/></div>}
     </div>
   );
 }
