@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import 'ag-grid-community/dist/styles/ag-grid.css';
-import { Button } from '@mui/material';
 import { AgGridReact } from 'ag-grid-react/lib/agGridReact';
 import { API_URL_VALMISTAJAT, API_URL_VALMISTAJA_DEL } from '../constants';
+import { IconButton } from '@mui/material';
+import DeleteIcon from "@mui/icons-material/Delete";
 
 
 export default function Valmistajat() {
     const [valmistajat, setValmistajat] = useState([]);
 
     const [columnDefs] = useState ([
+        { field: 'name', sortable: true, filter: true},
         {
             headerName: '',
             field: 'valmistajaid',
             width: 120,
-            cellRenderer: params => <Button size='small' color='error' onClick={() => deleteValmistaja(params.value)}>Delete</Button>
+            cellRenderer: params => <IconButton size='small' color='error' onClick={() => deleteValmistaja(params.value)}>
+            <DeleteIcon/>
+            </IconButton>
         },
-        { field: 'name', sortable: true, filter: true},
+        
     ])
 
     useEffect(() => {
