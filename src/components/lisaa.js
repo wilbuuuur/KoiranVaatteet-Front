@@ -22,7 +22,6 @@ export default function LisaaVaate(props) {
   const [valmistajat, setValmistajat] = React.useState([]);
 
   const getValmistajat = () => {
-    console.log("get valmistajat pyörii");
     fetch(API_URL_VALMISTAJAT)
       .then((response) => {
         if (response.ok) return response.json();

@@ -1,10 +1,15 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import { MenuItem } from '@mui/material';
+import { API_URL_VALMISTAJAT } from "../constants";
+import {IconButton} from '@mui/material';
+import BuildIcon from '@mui/icons-material/Build';
 
 export default function EditVaate(props) {
     const [open, setOpen] = React.useState(false);
@@ -15,6 +20,21 @@ export default function EditVaate(props) {
         price: '',
         valmistaja: ''
     })
+    const [valmistajat, setValmistajat] = React.useState([]);
+
+    const getValmistajat = () => {
+      fetch(API_URL_VALMISTAJAT)
+        .then((response) => {
+          if (response.ok) return response.json();
+          else alert("Something went wrong");
+        })
+        .then((data) => setValmistajat(data))
+        .catch((err) => console.log(err));
+    };
+  
+    useEffect(() => {
+      getValmistajat();
+    }, []);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -40,9 +60,9 @@ export default function EditVaate(props) {
 
 return (
     <div>
-    <Button variant="outlined" onClick={handleClickOpen}>
-    Muokkaa
-    </Button>
+        <IconButton color="primary" onClick={handleClickOpen}>
+          <BuildIcon/>
+        </IconButton>
     <Dialog open={open} onClose={handleClose}>
     <DialogTitle>Vaate</DialogTitle>
     <DialogContent>
@@ -71,14 +91,19 @@ return (
         fullWidth
         variant="standard"
       />
-      <TextField
-        margin="dense"
-        label="Valmistaja"
-        value={vaate.valmistaja}
-        onChange={e => setVaate({...vaate, price: e.target.value})}
-        fullWidth
-        variant="standard"
-      />
+          <TextField
+            select
+            label="Valmistaja"
+            value={vaate.valmistaja}
+            onChange={(e) => setVaate({ ...vaate, valmistaja: e.target.value })}
+            fullWidth
+          >
+            {valmistajat.map((option) => (
+              <MenuItem key={option.valmistajaid} value={option}>
+                {option.name}
+              </MenuItem>
+            ))}
+          </TextField>
       
     </DialogContent>
     <DialogActions>

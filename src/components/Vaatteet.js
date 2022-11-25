@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
-import Button from '@mui/material/Button';
-
+import { IconButton } from '@mui/material';
+import DeleteIcon from "@mui/icons-material/Delete";
 import Lisaa from './lisaa';
 import Muokkaa from './Muokkaa';
 import { API_URL, API_URL_VAATTEET } from '../constants';
@@ -24,7 +24,9 @@ function Vaatelist () {
         },
         {
             cellRenderer: params =>
-             <Button size='small' color='error' onClick={() => deleteVaate(params.data)}>Delete</Button>
+            <IconButton size='small' color='error' onClick={() => deleteVaate(params.data)}>
+            <DeleteIcon/>
+            </IconButton>
         }
     ])
 
@@ -74,7 +76,7 @@ function Vaatelist () {
 
     const updateVaate = (data) => {
         console.log(data)
-        fetch(API_URL + data.id, {
+        fetch(API_URL_VAATTEET+"/"+ data.id, {
             method: 'PUT',
             headers: {'Content-type':'application/json'},
             body: JSON.stringify(data)
