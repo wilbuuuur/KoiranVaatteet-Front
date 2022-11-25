@@ -5,6 +5,8 @@ import { AgGridReact } from 'ag-grid-react/lib/agGridReact';
 import { API_URL_VALMISTAJAT, API_URL_VALMISTAJA_DEL } from '../constants';
 import { IconButton } from '@mui/material';
 import DeleteIcon from "@mui/icons-material/Delete";
+import LisaaValmistaja from './LisaaValmistaja';
+
 
 
 export default function Valmistajat() {
@@ -53,8 +55,26 @@ export default function Valmistajat() {
         }
     }
 
+    const addValmistaja = (vaate) => {
+        console.log(vaate);
+      fetch(API_URL_VALMISTAJAT, {
+        method: 'POST',
+        headers: {'Content-type':'application/json'},
+        body: JSON.stringify(vaate)
+    })
+      .then(response => {
+          if (response.ok)
+           getValmistajat();
+          else
+           alert('something went wrong')
+      })
+      .catch(err => console.error(err))
+  }
+
     return(
         <div className="App">
+            <LisaaValmistaja addValmistaja={addValmistaja}/>
+            
             <div className="ag-theme-material" style={{ height: 550, width: '100%', margin: 'auto' }}>
                 <AgGridReact
                     rowData={valmistajat}
