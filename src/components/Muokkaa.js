@@ -44,8 +44,7 @@ export default function EditVaate(props) {
         name: props.data.name,
         type: props.data.type,
         price: props.data.price,
-        
-        
+        valmistaja: props.data.valmistaja
     })
   };
 
