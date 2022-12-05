@@ -26,18 +26,10 @@ function App() {
           <Typography variant='h6'>
             Vaate
           </Typography>
-          <Tabs value={value} onChange={handleChange}>
-            <Tab label="Vaatteet" value="one" />
-            <Tab label="Valmistajat" value="two" />
-            <Tab label="Diagram" value="three" />
-
-            </Tabs>
         </Toolbar>
       </AppBar>
       <Login/>
-      {value==='one' && <div><Vaatelist/></div>}
-      {value==='two'&& <div><Valmistajat/></div>}
-      {value==='three'&& <div><Ympyra/></div>}
+      
     </div>
   );
 }
