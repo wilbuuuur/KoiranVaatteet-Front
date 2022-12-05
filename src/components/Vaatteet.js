@@ -30,8 +30,12 @@ function Vaatelist () {
         }
     ])
 
+    const token = sessionStorage.getItem("jwt");
+
     const getVaatteet = () => {
-        fetch(API_URL_VAATTEET)
+        fetch(API_URL_VAATTEET,{
+            headers: { 'Authorization' : token }
+          })
         .then(response => {
             if (response.ok)
              return response.json();

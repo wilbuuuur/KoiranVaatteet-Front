@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import Vaatelist from './components/Vaatteet';
 import Valmistajat from './components/Valmistajat';
 import Ympyra from './components/Ympyra';
+import Login from './components/Login';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             </Tabs>
         </Toolbar>
       </AppBar>
+      <Login/>
       {value==='one' && <div><Vaatelist/></div>}
       {value==='two'&& <div><Valmistajat/></div>}
       {value==='three'&& <div><Ympyra/></div>}
