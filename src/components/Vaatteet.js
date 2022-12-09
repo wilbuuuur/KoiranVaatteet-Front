@@ -48,8 +48,9 @@ function Vaatelist () {
     }, [])
 
     const deleteVaate = (data) => {
-      if (window.confirm('Are you sure'))
-        fetch(API_URL + data.id , {method: 'DELETE'})
+      if (window.confirm('Are you sure')) {
+        const token = sessionStorage.getItem("jwt");
+        fetch(API_URL + data.id , {method: 'DELETE', headers: { 'Authorization' : token }})
         .then(response => {
             if (response.ok)
              getVaatteet();
@@ -57,6 +58,7 @@ function Vaatelist () {
              alert('something went wrong')
         })
     }
+}
 
     const addVaate = (vaate) => {
             console.log(vaate);
