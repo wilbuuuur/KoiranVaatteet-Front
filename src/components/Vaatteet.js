@@ -8,8 +8,6 @@ import Lisaa from './lisaa';
 import Muokkaa from './Muokkaa';
 import { API_URL, API_URL_VAATTEET } from '../constants';
 
-
-
 function Vaatelist () {
     const [vaatteet, setVaatteet] = useState ([]);
 
