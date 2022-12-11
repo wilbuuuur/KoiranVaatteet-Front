@@ -14,9 +14,9 @@ function Login() {
     username: "",
     password: "",
   });
-  const [isAuthenticated, setAuth] = useState(false);
+ /* const [isAuthenticated, setAuth] = useState(false);*/
   const [open, setOpen] = useState(false);
-
+/*
   const handleChange = (event) => {
     setUser({ ...user, [event.target.name]: event.target.value });
   };
@@ -78,18 +78,19 @@ function Login() {
         )}
       </div>
     );
-  } else {
-    return (
+  } else {*/
+    return ( 
       <div>
+        
         <Stack spacing={2} alignItems="center" mt={2}>
-          <TextField name="username" label="Username" onChange={handleChange} />
+          <TextField name="username" label="Username" /*onChange={handleChange}*/ />
           <TextField
             type="password"
             name="password"
             label="Password"
-            onChange={handleChange}
+            /*onChange={handleChange}*/
           />
-          <Button variant="outlined" color="primary" onClick={login}>
+          <Button variant="outlined" color="primary" /*onClick={login}*/>
             Login
           </Button>
         </Stack>
@@ -101,7 +102,7 @@ function Login() {
         />
       </div>
     );
-  }
+  //}
 }
 
 export default Login;

@@ -28,11 +28,11 @@ function Vaatelist () {
         }
     ])
 
-    const token = sessionStorage.getItem("jwt");
+    //const token = sessionStorage.getItem("jwt");
 
     const getVaatteet = () => {
         fetch(API_URL_VAATTEET,{
-            headers: { 'Authorization' : token }
+            //headers: { 'Authorization' : token }
           })
         .then(response => {
             if (response.ok)
@@ -48,9 +48,10 @@ function Vaatelist () {
     }, [])
 
     const deleteVaate = (data) => {
+        console.log(API_URL + data.id)
       if (window.confirm('Are you sure')) {
-        const token = sessionStorage.getItem("jwt");
-        fetch(API_URL + data.id , {method: 'DELETE', headers: { 'Authorization' : token }})
+        //const token = sessionStorage.getItem("jwt");
+        fetch(API_URL + data.id , {method: 'DELETE', /*headers: { 'Authorization' : token }*/})
         .then(response => {
             if (response.ok)
              getVaatteet();
@@ -89,7 +90,7 @@ function Vaatelist () {
             if (response.ok)
              getVaatteet();
             else
-             alert('Vituiks män');
+             alert('something went wrong');
      })
     .catch(err => console.error(err))
 
