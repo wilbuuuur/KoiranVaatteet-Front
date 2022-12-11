@@ -28,7 +28,7 @@ function App() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Login/>
+      <Login />
       
     </div>
   );
